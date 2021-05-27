@@ -1,0 +1,34 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+note over browser:
+User inputs the data in the text 
+field and then  click the Submit button.
+ end note
+browser->server: https://studies.chttps://www.websequencediagrams.com/?png=msc855408577s.helsinki.fi/exampleapp/new_note
+server-->browser: remote address: 128.214.9.77:443
+
+note right of server:
+This is a URL redirect,with which the server asks 
+ the browser to do a new  remote address to GET request to the 
+ address defined in the header's Location - the address notes.
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css and request method : GET
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js and status code:302 
+
+note over browser: 
+
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "new notes", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that requests notes to display from server
+end note
